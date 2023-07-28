@@ -14,9 +14,9 @@ class StackSpider(Spider):
         questions = Selector(response).xpath('//div[@class="s-post-summary--content"]/h3')
 
         for question in questions:
-            items = StackItem()
-            items['title'] = question.xpath('a[@class="s-link"]/text()').extract()
-            items['url'] = question.xpath('a[@class="s-link"]/@href').extract()
-            yield items
+            item = StackItem()
+            item['title'] = question.xpath('a[@class="s-link"]/text()').extract()
+            item['url'] = question.xpath('a[@class="s-link"]/@href').extract()
+            yield item
 
             
